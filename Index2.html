@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AgroSense PRO</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+
+</head>
+
+<body>
+
+<!-- 🔐 LOGIN OVERLAY -->
+<div id="loginPage" class="login">
+  <div class="login-box">
+    <h2>🌱 AgroSense PRO</h2>
+    <input id="user" placeholder="Nom utilisateur">
+    <input id="pass" type="password" placeholder="Mot de passe">
+    <button onclick="login()">Connexion</button>
+  </div>
+</div>
+
+<div class="layout" id="app">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+<h1><span>Agro</span>Sense</h1>
+
+<div class="nav-item active" onclick="goPage('accueil')">🏠 Accueil</div>
+<div class="nav-item" onclick="goPage('collecte')">📥 Collecte</div>
+<div class="nav-item" onclick="goPage('dashboard')">📊 Dashboard</div>
+<div class="nav-item" onclick="goPage('ia')">🤖 IA</div>
+<div class="nav-item" onclick="goPage('export')">📤 Export</div>
+
+<div class="user" id="userDisplay"></div>
+</aside>
+
+<!-- MAIN -->
+<div class="main">
+
+<div class="topbar">
+<div id="topbar-title">Accueil</div>
+<div id="topbar-cnt">0 collectes</div>
+</div>
+
+<div class="content">
+
+<!-- ACCUEIL -->
+<div class="page active" id="page-accueil">
+<h2>🌱 AgroSense PRO</h2>
+<p>Analyse agricole intelligente + IA + dashboard</p>
+</div>
+
+<!-- COLLECTE -->
+<div class="page" id="page-collecte">
+
+<input id="f-nom" placeholder="Nom">
+<input id="f-region" placeholder="Région">
+
+<select id="f-culture">
+<option value="">Culture</option>
+<option>Maïs</option>
+<option>Riz</option>
+<option>Manioc</option>
+<option>Cacao</option>
+</select>
+
+<input id="f-rendement" type="number" placeholder="Rendement kg/ha">
+
+<button onclick="submitForm()">Enregistrer</button>
+
+</div>
+
+<!-- DASHBOARD -->
+<div class="page" id="page-dashboard">
+
+<canvas id="chart-bar"></canvas>
+<canvas id="chart-donut"></canvas>
+
+<div id="alerts"></div>
+
+</div>
+
+<!-- IA -->
+<div class="page" id="page-ia">
+
+<div id="chat"></div>
+
+<input id="ai-input" placeholder="Question agricole">
+<button onclick="sendMsg()">Envoyer</button>
+
+</div>
+
+<!-- EXPORT -->
+<div class="page" id="page-export">
+<button onclick="exportData()">Exporter JSON</button>
+<button onclick="clearAll()">Reset Data</button>
+</div>
+
+</div>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
